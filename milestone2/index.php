@@ -88,45 +88,7 @@ $dischi = [
     ]
 ];
 
+header('Content-Type: application/json');
+echo json_encode($dischi);
+
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP ajax dischi milestone 1</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-    <header>
-        <div class="container">
-            <img src="logo.png" alt="logo" />
-        </div>
-    </header>
-
-    <div class="cds-container container">
-
-        <?php
-        foreach ($dischi as $value) {
-        ?>
-
-            <div class="cd">
-                <img src="<?php echo $value['poster']; ?>" alt="<?php echo $value['title']; ?>">
-                <h3><?php echo $value["title"]; ?></h3>
-                <span class="author"><?php echo $value["author"]; ?></span>
-                <span class="year"><?php echo $value["year"]; ?></span>
-            </div>
-
-        <?php
-        }
-        ?>
-
-    </div>
-
-</body>
-
-</html>
