@@ -1855,24 +1855,52 @@ var root = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
   data: {
     dischiMusicali: null
   },
-  methods: {},
-  mounted: function mounted() {
-    var _this = this;
+  methods: {
+    genere: function genere(val) {
+      console.log(val);
+      console.log(val.target.value);
+      /*
+      if (val.target.value === "All") {
+          this.getAxios("partials/index.php");
+      } else if (val.target.value === "Pop") {
+          this.getAxios("partials/pop.php");
+      } else if (val.target.value === "Rock") {
+          this.getAxios("partials/rock.php");
+      } else if (val.target.value === "Metal") {
+          this.getAxios("partials/metal.php");
+      } else if (val.target.value === "Jazz") {
+          this.getAxios("partials/jazz.php");
+      }
+      */
 
-    axios__WEBPACK_IMPORTED_MODULE_0___default().get('http://localhost/classe%2023/php-ajax-dischi/milestone2/index.php').then(function (response) {
+      this.getAxios("partials/get.php?genere=" + val.target.value);
+    },
+    getAxios: function getAxios(genere) {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get(genere).then(function (response) {
+        console.log(response);
+        console.log(response.data);
+        _this.dischiMusicali = response.data;
+        console.log(_this.dischiMusicali);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
+  mounted: function mounted() {
+    var _this2 = this;
+
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get('partials/get.php').then(function (response) {
       console.log(response);
       console.log(response.data);
-      _this.dischiMusicali = response.data;
-      console.log(_this.dischiMusicali);
+      _this2.dischiMusicali = response.data;
+      console.log(_this2.dischiMusicali);
     })["catch"](function (error) {
       console.log(error);
     });
   }
 });
-/*
-https://cors-anywhere.herokuapp.com/
-http://localhost/classe%2023/php-ajax-dischi/milestone2/index.php
-*/
 
 /***/ }),
 
